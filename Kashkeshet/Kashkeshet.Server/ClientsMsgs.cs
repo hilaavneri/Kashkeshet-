@@ -6,13 +6,15 @@ namespace Kashkeshet.Server
 {
     public class ClientsMsgs
     {
-        private IDictionary<Guid, IEnumerable<byte[]>> _messages;        
-        private object _lock;
+        private IDictionary<Guid, IEnumerable<byte[]>> _messages;
+        private IDictionary<Guid, string> _usernames; 
+        private readonly object _lock;
 
-        public ClientsMsgs(IDictionary<Guid, IEnumerable<byte[]>> messages)
+        public ClientsMsgs(IDictionary<Guid, IEnumerable<byte[]>> messages, IDictionary<Guid, string> usernames)
         {
             _messages = messages;
             _lock = new object();
+            _usernames = usernames;
         }
 
         public IEnumerable<byte[]> GetMessagesByUserName(Guid id)
@@ -25,11 +27,12 @@ namespace Kashkeshet.Server
             } 
         }
 
-        public void AddUser(Guid id)
+        public void AddUser(Guid id, string username)
         {
             lock (_lock)
             {
-                _messages[id] = new List<byte[]>(); 
+                _messages[id] = new List<byte[]>();
+                _usernames[id] = username;
             }
 
         }
