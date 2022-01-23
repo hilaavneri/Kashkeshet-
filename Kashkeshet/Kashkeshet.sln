@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet", "Kashkeshet\Ka
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Server", "Kashkeshet.Server\Kashkeshet.Server.csproj", "{7BFA445C-33EE-479D-9694-8FBCF111D384}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Common", "Kashkeshet.Common\Kashkeshet.Common.csproj", "{4C011B2B-AE44-40C0-915C-AC0B7B7FB864}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7BFA445C-33EE-479D-9694-8FBCF111D384}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BFA445C-33EE-479D-9694-8FBCF111D384}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BFA445C-33EE-479D-9694-8FBCF111D384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C011B2B-AE44-40C0-915C-AC0B7B7FB864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C011B2B-AE44-40C0-915C-AC0B7B7FB864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C011B2B-AE44-40C0-915C-AC0B7B7FB864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C011B2B-AE44-40C0-915C-AC0B7B7FB864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

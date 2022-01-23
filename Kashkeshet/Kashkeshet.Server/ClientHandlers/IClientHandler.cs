@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Kashkeshet.Server.ClientHandlers
 {
-    class IClientHandler
+    public interface IClientHandler
     {
+        void HandleClient();
     }
 }
