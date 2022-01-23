@@ -17,7 +17,15 @@ namespace Kashkeshet.Server
             _usernames = usernames;
         }
 
-        public IEnumerable<byte[]> GetMessagesByUserName(Guid id)
+        public bool IsClientSignedIn(Guid id)
+        {
+            lock (_lock)
+            {
+                return _messages.ContainsKey(id);
+            }
+        }
+
+        public IEnumerable<byte[]> GetMessagesById(Guid id)
         {
             lock (_lock)
             {

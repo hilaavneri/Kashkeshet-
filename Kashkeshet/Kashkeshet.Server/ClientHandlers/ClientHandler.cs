@@ -16,8 +16,9 @@ namespace Kashkeshet.Server.ClientHandlers
             {
                 try
                 {
+                    if (_messages.)
                     (string command, int bytesRec, byte[] bytes) = _senderReciever.ReadData();
-                    _commandFactory.Create(command, bytes, _messages);
+                    _commandFactory.Create(command, bytes, _messages,guid);
                     
                 }
                 catch (TimeoutException)
