@@ -8,6 +8,13 @@ namespace Kashkeshet.Server.Commands
     {
         public ICommand Create(string commandName, byte[] msg, ClientsMsgs msgs)
         {
+            ICommand command = null;
+            if (commandName.Equals("SNDALL"))
+            {
+                command = new MessageAllCommand(msgs, msg);
+            }
+            
+            return command;
         }
     }
 }

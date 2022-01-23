@@ -22,7 +22,7 @@ namespace Kashkeshet.Server
             {
                 Console.Write("Waiting for a connection... ");
                 TcpClient client = _server.AcceptTcpClient();
-                Task.Run(() => clientHandler.HandleClient());
+                Task.Run(() => clientHandler.HandleClient(new Guid()));
             }
 
         }

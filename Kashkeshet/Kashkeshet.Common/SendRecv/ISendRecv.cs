@@ -2,7 +2,7 @@
 {
     public interface ISendRecv
     {
-        (int, byte[]) ReadData();
+        (string,int, byte[]) ReadData();
         void WriteData(byte[] data);
         void CloseConnection();
     }

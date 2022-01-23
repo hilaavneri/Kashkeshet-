@@ -1,4 +1,6 @@
-﻿using System.Net.Sockets;
+﻿using System.Linq;
+using System.Net.Sockets;
+using System.Text;
 
 namespace Kashkeshet.Common.SendRecv
 {
@@ -16,11 +18,13 @@ namespace Kashkeshet.Common.SendRecv
             _stream.Close();
         }
 
-        public (int, byte[]) ReadData()
+        public (string,int, byte[]) ReadData()
         {
-            byte[] bytes = new byte[1024];
+            var commandLen = Encoding.ASCII.GetByteCount("AAAAAA");
+            byte[] bytes = new byte[1024];           
             int bytesRec = _stream.Read(bytes, 0, bytes.Length);
-            return (bytesRec, bytes);
+            string Command = Encoding.ASCII.GetString(bytes.Take(commandLen).ToArray());            
+            return (Command,bytesRec - commandLen, bytes.Skip(commandLen).ToArray());
         }
 
         public void WriteData(byte[] data)
