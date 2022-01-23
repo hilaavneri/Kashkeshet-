@@ -5,7 +5,6 @@ namespace Kashkeshet.Server.ClientHandlers
 {
     class ClientHandler : IClientHandler
     {
-        private string _username;
         private ClientsMsgs _messages;
         private ISendRecv _senderReciever;
 

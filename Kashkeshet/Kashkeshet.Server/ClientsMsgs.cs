@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Kashkeshet.Server
 {
-    class ClientsMsgs
+    public class ClientsMsgs
     {
         private IDictionary<string, IEnumerable<byte[]>> _messages;        
         private object _lock;
@@ -43,6 +43,17 @@ namespace Kashkeshet.Server
             lock (_lock)
             {
                 _messages[username].Append(msg);
+            }
+        }
+
+        public void SendToAll(byte[] msg)
+        {
+            lock (_lock)
+            {
+                foreach (var item in _messages)
+                {
+                    item.Value.Append(msg);
+                }
             }
         }
 

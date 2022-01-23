@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Kashkeshet.Server.Commands
 {
-    class ICommand
+    public interface ICommand
     {
+        void Run();
     }
 }

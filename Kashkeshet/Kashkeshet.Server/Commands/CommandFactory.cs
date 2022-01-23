@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Kashkeshet.Server.Commands
 {
-    class CommandFactory
+    public class CommandFactory
     {
+        public ICommand Create(string commandName, byte[] msg, ClientsMsgs msgs)
+        {
+        }
     }
 }
