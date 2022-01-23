@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Kashkeshet.Server.ClientHandlers
 {
     class ClientHandler : IClientHandler
     {
+        private string _username;
+
         public void HandleClient()
         {
             throw new NotImplementedException();

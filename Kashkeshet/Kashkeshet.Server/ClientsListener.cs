@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kashkeshet.Server
 {
-    class ClientsListener
+    public class ClientsListener
     {
         private TcpListener _server;
         private readonly int _port;
