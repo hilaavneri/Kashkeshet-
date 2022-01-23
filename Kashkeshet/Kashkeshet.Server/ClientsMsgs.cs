@@ -5,7 +5,7 @@ namespace Kashkeshet.Server
 {
     class ClientsMsgs
     {
-        private IDictionary<string, IEnumerable<byte[]>> _messages;
+        private IDictionary<string, IEnumerable<byte[]>> _messages;        
         private object _lock;
 
         public ClientsMsgs(IDictionary<string, IEnumerable<byte[]>> messages)
