@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kashkeshet.Common.SendRecv
 {
-    class TcpSendRecv : ISendRecv
+    public class TcpSendRecv : ISendRecv
     {
         private NetworkStream _stream;
 
@@ -23,8 +23,10 @@ namespace Kashkeshet.Common.SendRecv
             var commandLen = Encoding.ASCII.GetByteCount("AAAAAA");
             byte[] bytes = new byte[1024];           
             int bytesRec = _stream.Read(bytes, 0, bytes.Length);
-            string Command = Encoding.ASCII.GetString(bytes.Take(commandLen).ToArray());            
-            return (Command,bytesRec - commandLen, bytes.Skip(commandLen).ToArray());
+            string Command = Encoding.ASCII.GetString(bytes.Take(commandLen).ToArray());
+            System.Console.WriteLine(Command);
+            
+            return (Command,bytesRec , bytes);
         }
 
         public void WriteData(byte[] data)

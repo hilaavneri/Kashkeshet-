@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Kashkeshet.Server
 {
     public class ClientsMsgs
     {
-        private IDictionary<Guid, IEnumerable<byte[]>> _messages;
-        private IDictionary<Guid, string> _usernames; 
+        private IDictionary<int, List<byte[]>> _messages;
+        private IDictionary<int, string> _usernames; 
         private readonly object _lock;
 
-        public ClientsMsgs(IDictionary<Guid, IEnumerable<byte[]>> messages, IDictionary<Guid, string> usernames)
+        public ClientsMsgs(IDictionary<int, List<byte[]>> messages, IDictionary<int, string> usernames)
         {
             _messages = messages;
             _lock = new object();
             _usernames = usernames;
         }
 
-        public bool IsClientSignedIn(Guid id)
+        public bool IsClientSignedIn(int id)
         {
             lock (_lock)
             {
@@ -25,7 +26,7 @@ namespace Kashkeshet.Server
             }
         }
 
-        public IEnumerable<byte[]> GetMessagesById(Guid id)
+        public List<byte[]> GetMessagesById(int id)
         {
             lock (_lock)
             {
@@ -35,22 +36,23 @@ namespace Kashkeshet.Server
             } 
         }
 
-        public void AddUser(Guid id, string username)
+        public void AddUser(int id, string username)
         {
             lock (_lock)
             {
+                Console.WriteLine($"Adding user name, key:{id}, user name: {username}"); 
                 _messages[id] = new List<byte[]>();
                 _usernames[id] = username;
             }
 
         }
 
-        public void RemoveUser(Guid id)
+        public void RemoveUser(int id)
         {
             _messages.Remove(id);
         }
 
-        public void AddMessage(Guid id, byte[] msg)
+        public void AddMessage(int id, byte[] msg)
         {
             lock (_lock)
             {
@@ -60,10 +62,14 @@ namespace Kashkeshet.Server
 
         public void SendToAll(byte[] msg)
         {
+         
             lock (_lock)
             {
                 foreach (var item in _messages)
                 {
+                    Console.WriteLine("key:" + item.Key);
+                    Console.WriteLine("username:" + _usernames[item.Key]);
+                    Console.WriteLine(Encoding.ASCII.GetString(msg));
                     item.Value.Append(msg);
                 }
             }

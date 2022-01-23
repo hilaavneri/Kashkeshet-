@@ -8,9 +8,9 @@ namespace Kashkeshet.Server.Commands
     {
         private ClientsMsgs _messages;
         private readonly byte[] _username;
-        private readonly Guid _id;
+        private readonly int _id;
 
-        public SignInCommand(ClientsMsgs messages, byte[] messageToSend, Guid id)
+        public SignInCommand(ClientsMsgs messages, byte[] messageToSend, int id)
         {
             _messages = messages;
             _username = messageToSend;

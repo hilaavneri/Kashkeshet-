@@ -8,9 +8,9 @@ namespace Kashkeshet.Server.Commands
     {
         private ClientsMsgs _messages;
         private readonly byte[] _messageToSend;
-        private readonly Guid _id; 
+        private readonly int _id; 
 
-        public MessageAllCommand(ClientsMsgs messages, byte[] messageToSend, Guid id)
+        public MessageAllCommand(ClientsMsgs messages, byte[] messageToSend, int id)
         {
             _messages = messages;
             _messageToSend = messageToSend;
@@ -19,6 +19,7 @@ namespace Kashkeshet.Server.Commands
 
         public void Run()
         {
+            Console.WriteLine("sending to all");
             _messages.SendToAll(_messageToSend);
         }
     }

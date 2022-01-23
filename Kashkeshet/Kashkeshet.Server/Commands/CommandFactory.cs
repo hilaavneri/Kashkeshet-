@@ -6,7 +6,7 @@ namespace Kashkeshet.Server.Commands
 {
     public class CommandFactory
     {
-        public ICommand Create(string commandName, byte[] msg, ClientsMsgs msgs, Guid id)
+        public ICommand Create(string commandName, byte[] msg, ClientsMsgs msgs, int id)
         {
             ICommand command = null;
             if (commandName.Equals("SNDALL"))

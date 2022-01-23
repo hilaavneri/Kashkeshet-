@@ -1,6 +1,8 @@
 ﻿using Kashkeshet.Common.SendRecv;
 using Kashkeshet.Server.Commands;
 using System;
+using System.IO;
+using System.Text;
 
 namespace Kashkeshet.Server.ClientHandlers
 {
@@ -10,25 +12,45 @@ namespace Kashkeshet.Server.ClientHandlers
         private ISendRecv _senderReciever;
         private CommandFactory _commandFactory;
 
-        public void HandleClient(Guid guid)
+        public ClientHandler(ClientsMsgs messages, CommandFactory commandFactory)
         {
+            _messages = messages;
+            _commandFactory = commandFactory;
+        }
+
+        public void HandleClient(int id, ISendRecv senderReciever)
+        {
+            Console.WriteLine("start");
+            _senderReciever = senderReciever;
+
             while (true)
             {
                 try
                 {
-                    if (_messages.)
+                    if (_messages.IsClientSignedIn(id))
+                    {
+                        var messages = _messages.GetMessagesById(id);
+                        foreach (var item in messages)
+                        {
+                            Console.WriteLine("GOT MESSAGE");
+                            _senderReciever.WriteData(item);
+                        }
+
+                    }
                     (string command, int bytesRec, byte[] bytes) = _senderReciever.ReadData();
-                    _commandFactory.Create(command, bytes, _messages,guid);
+                    _commandFactory.Create(command, bytes, _messages, id)?.Run();
+                    
                     
                 }
-                catch (TimeoutException)
-                {
-                    continue;
-                }
+
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
-                    _senderReciever.CloseConnection();
+                    if (!(e is IOException))
+                    {
+                        Console.WriteLine(e.Message);
+                        _senderReciever.CloseConnection();
+                        throw;
+                    }
                     
                 }
                 
