@@ -1,10 +1,16 @@
-﻿using System;
+﻿using Kashkeshet.Client.Messages;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Kashkeshet.Client.Chats
 {
-    class GroupChatInfo
+    class GroupChatInfo : ChatInfo
     {
+        public string Name { get; private set; }
+
+        public GroupChatInfo(List<ChatMessageInfo> messages, ChatTypes type, string name) : base(messages, type)
+        {
+            Name = name;
+        }
+
     }
 }
