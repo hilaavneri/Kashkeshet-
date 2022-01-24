@@ -2,7 +2,8 @@
 
 namespace Kashkeshet.Client.Common
 {
-    public class Class1
+    public interface IWriter
     {
+        byte[] GetData();
     }
 }
