@@ -22,13 +22,16 @@ namespace Client.UI
             Task.Run(()=> client.Run());
             Task.Run(() =>
             {
+                Console.WriteLine("Enter User Name");
+                writer.AddMsg(Encoding.ASCII.GetBytes("SIGNIN" + Console.ReadLine()));
                 while (true)
                 {
                     string msg = Console.ReadLine();
-                    writer.AddMsg(Encoding.ASCII.GetBytes(msg));
+                    writer.AddMsg(Encoding.ASCII.GetBytes("SNDALL"+msg));
 
                 }
             });
+            Console.WriteLine("hereeee");
             while (true)
             {
                 foreach (var c in chats)
@@ -37,6 +40,7 @@ namespace Client.UI
                     {
                         Console.WriteLine("GOT MESSAGAE FROM:" 
                             +item.SenderUserName);
+                        Console.WriteLine(Encoding.ASCII.GetString(item.Message));
                     }
                     c.Messages.Clear();
                 }
