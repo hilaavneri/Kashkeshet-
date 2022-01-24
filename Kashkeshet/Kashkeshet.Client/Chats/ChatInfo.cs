@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Kashkeshet.Client.Chats
+﻿namespace Kashkeshet.Client.Chats
 {
-    class Chat
+    public class ChatInfo
     {
+        
     }
 }
