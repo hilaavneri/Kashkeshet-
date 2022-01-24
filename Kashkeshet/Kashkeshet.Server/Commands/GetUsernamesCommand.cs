@@ -7,9 +7,9 @@ namespace Kashkeshet.Server.Commands
 {
     class GetUsernamesCommand : ICommand
     {
-        private string _name;
+        private readonly string _name;
         private ClientsMsgs _messages;
-        private int _id;
+        private readonly int _id;
 
         public void Run()
         {
