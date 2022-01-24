@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Client", "Kashke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Client.UI", "Kashkeshet.Client.UI\Kashkeshet.Client.UI.csproj", "{54EC4739-834E-48CE-B356-5B5168DC1FAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Client.Common", "Kashkeshet.Client.Common\Kashkeshet.Client.Common.csproj", "{87AAC673-3D0B-4B79-BC72-5F22C00E9423}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{54EC4739-834E-48CE-B356-5B5168DC1FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54EC4739-834E-48CE-B356-5B5168DC1FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54EC4739-834E-48CE-B356-5B5168DC1FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87AAC673-3D0B-4B79-BC72-5F22C00E9423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87AAC673-3D0B-4B79-BC72-5F22C00E9423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87AAC673-3D0B-4B79-BC72-5F22C00E9423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87AAC673-3D0B-4B79-BC72-5F22C00E9423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
