@@ -60,6 +60,14 @@ namespace Kashkeshet.Server
             }
         }
 
+        public string GetUserNameById (int id)
+        {
+            lock (_lock)
+            {
+                return _usernames[id];
+            }
+        }
+
         public void SendToAll(byte[] msg)
         {
          
