@@ -31,7 +31,7 @@ namespace Client.UI
 
                 }
             });
-            Console.WriteLine("hereeee");
+
             while (true)
             {
                 foreach (var c in chats)
