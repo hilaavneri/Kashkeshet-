@@ -8,7 +8,7 @@ namespace Kashkeshet.Server
     public class ClientsMsgs
     {
         private IDictionary<int, List<byte[]>> _messages;
-        private IDictionary<int, string> _usernames; 
+        private IDictionary<int, string> _usernames;
         private readonly object _lock;
 
         public ClientsMsgs(IDictionary<int, List<byte[]>> messages, IDictionary<int, string> usernames)
@@ -30,17 +30,17 @@ namespace Kashkeshet.Server
         {
             lock (_lock)
             {
-                List<byte[]> msgs =  new List<byte[]>(_messages[id]);
+                List<byte[]> msgs = new List<byte[]>(_messages[id]);
                 _messages[id] = new List<byte[]>();
                 return msgs;
-            } 
+            }
         }
 
         public void AddUser(int id, string username)
         {
             lock (_lock)
             {
-                Console.WriteLine($"Adding user name, key:{id}, user name: {username}"); 
+                Console.WriteLine($"Adding user name, key:{id}, user name: {username}");
                 _messages[id] = new List<byte[]>();
                 _usernames[id] = username;
             }
@@ -60,7 +60,7 @@ namespace Kashkeshet.Server
             }
         }
 
-        public string GetUserNameById (int id)
+        public string GetUserNameById(int id)
         {
             lock (_lock)
             {
@@ -70,7 +70,7 @@ namespace Kashkeshet.Server
 
         public void SendToAll(byte[] msg)
         {
-         
+
             lock (_lock)
             {
                 foreach (var item in _messages)
@@ -79,6 +79,15 @@ namespace Kashkeshet.Server
                 }
             }
         }
+
+        public List<string> GetAllUserNames()
+        {
+            lock (_lock)
+            {
+                return _usernames.Values.ToList();
+            }
+        }
+
 
     }
 }
