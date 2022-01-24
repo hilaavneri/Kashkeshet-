@@ -24,8 +24,7 @@ namespace Kashkeshet.Common.SendRecv
             byte[] bytes = new byte[1024];           
             int bytesRec = _stream.Read(bytes, 0, bytes.Length);
             string Command = Encoding.ASCII.GetString(bytes.Take(commandLen).ToArray());
-            System.Console.WriteLine(Command);
-            
+            System.Console.WriteLine(Command);            
             return (Command,bytesRec , bytes.Skip(commandLen).Take(bytesRec).ToArray());
         }
 

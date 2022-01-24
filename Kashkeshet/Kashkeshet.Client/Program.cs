@@ -6,7 +6,7 @@ namespace Kashkeshet.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
