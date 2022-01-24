@@ -20,7 +20,7 @@ namespace Kashkeshet.Server.Commands
         public void Run()
         {
             Console.WriteLine("sending to all");
-            _messages.SendToAll(_messageToSend);
+            _messages.SendToAll(Encoding.ASCII.GetBytes("SNDALL" +_messages.GetUserNameById(_id).PadRight(20) + _messageToSend));
         }
     }
 }
