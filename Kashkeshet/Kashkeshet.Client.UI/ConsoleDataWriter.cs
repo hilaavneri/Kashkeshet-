@@ -25,7 +25,6 @@ namespace Client.UI
         
         public void AddMsg(byte[] msg)
         {
-            Console.WriteLine("Adding msg:" + Encoding.ASCII.GetString(msg));
             _messages.Enqueue(msg);
         }
     }
