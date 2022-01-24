@@ -17,7 +17,9 @@ namespace Kashkeshet.Client.Messages
 
         public ChatMessageInfo Create(byte[] data)
         {
+            Console.WriteLine("got"+ Encoding.ASCII.GetString(data));
             string username = Encoding.ASCII.GetString(data.Take(_userNameLength).ToArray());
+            Console.WriteLine("user" + username);
             return new ChatMessageInfo(ChatTypes.Global, username, data.Skip(_userNameLength).ToArray());
         }
     }

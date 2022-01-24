@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Common", "Kashke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Client", "Kashkeshet.Client\Kashkeshet.Client.csproj", "{ED38E943-14C7-4C1E-8DCA-7A903885BE54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Client.UI", "Kashkeshet.Client.UI\Kashkeshet.Client.UI.csproj", "{54EC4739-834E-48CE-B356-5B5168DC1FAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.UI", "Kashkeshet.Client.UI\Client.UI.csproj", "{54EC4739-834E-48CE-B356-5B5168DC1FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashkeshet.Client.Common", "Kashkeshet.Client.Common\Kashkeshet.Client.Common.csproj", "{87AAC673-3D0B-4B79-BC72-5F22C00E9423}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Common", "Kashkeshet.Client.Common\Client.Common.csproj", "{87AAC673-3D0B-4B79-BC72-5F22C00E9423}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

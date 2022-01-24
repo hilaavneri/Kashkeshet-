@@ -40,7 +40,6 @@ namespace Kashkeshet.Server.ClientHandlers
 
                     }
                     (string command, int bytesRec, byte[] bytes) = _senderReciever.ReadData();
-
                         Console.WriteLine("HANDLE CLIENT ID " + id);
                         _commandFactory.Create(command, bytes, _messages, id)?.Run();
                     

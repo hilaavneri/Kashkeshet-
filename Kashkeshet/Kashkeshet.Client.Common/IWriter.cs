@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kashkeshet.Client.Common
+namespace Client.Common
 {
     public interface IWriter
     {

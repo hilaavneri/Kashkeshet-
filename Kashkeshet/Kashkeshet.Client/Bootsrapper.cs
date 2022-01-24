@@ -1,6 +1,7 @@
 ﻿using Kashkeshet.Client.Chats;
 using Kashkeshet.Client.Clients;
 using Kashkeshet.Client.Commands;
+using Client.Common;
 using Kashkeshet.Client.Messages;
 using Kashkeshet.Common.SendRecv;
 using System;
@@ -12,14 +13,12 @@ namespace Kashkeshet.Client
 {
     public class Bootsrapper
     {
-        public ChatClient Create()
+        public ChatClient Create(IWriter writer, List<Chat> chats,string ip, int port)
         {
-            TcpClient client = new TcpClient();
+            TcpClient client = new TcpClient(ip, port);
             client.GetStream().ReadTimeout = 1000;
-            var chat = new Chat(new List<ChatMessageInfo>(), ChatTypes.Global);
-            var chats = new List<Chat>();
-            chats.Add(chat);
-            return new ChatClient(new TcpSendRecv(client.GetStream()), new CommandFactory(), new MessagesFactory(20), chats);
+  
+            return new ChatClient(new TcpSendRecv(client.GetStream()), new CommandFactory(), new MessagesFactory(20), chats,writer);
 
         }
     }

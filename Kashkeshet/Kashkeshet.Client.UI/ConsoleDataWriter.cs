@@ -1,15 +1,32 @@
-﻿using Kashkeshet.Client.Common;
+﻿using Client.Common;
 using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Collections.Concurrent;
 
-namespace Kashkeshet.Client.UI
+namespace Client.UI
 {
     public class ConsoleDataWriter : IWriter
     {
+        private ConcurrentQueue<byte[]> _messages;
+
+        public ConsoleDataWriter(ConcurrentQueue<byte[]> messages)
+        {
+            _messages = messages;
+        }
+
         public byte[] GetData()
         {
-            string data = Console.ReadLine();
-            return Encoding.ASCII.GetBytes(data);
+            byte[] msg = null;   
+             _messages.TryDequeue(out msg);
+
+            return msg;
+        }
+        
+        public void AddMsg(byte[] msg)
+        {
+            Console.WriteLine("Adding msg:" + Encoding.ASCII.GetString(msg));
+            _messages.Enqueue(msg);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Kashkeshet.Client.Chats;
 using Kashkeshet.Client.Commands;
-using Kashkeshet.Client.Common;
+using Client.Common;
 using Kashkeshet.Client.Messages;
 using Kashkeshet.Common.SendRecv;
 using System;
@@ -9,20 +9,21 @@ using System.IO;
 
 namespace Kashkeshet.Client.Clients
 {
-    class Client
+    public class ChatClient
     {
         private ISendRecv _sendRecv;
         private CommandFactory _commandFactory;
-        private MessagesFactory _messagesFactory;
+        private readonly MessagesFactory _messagesFactory;
         private IWriter _writer;
-        private List<Chat> _chats;
+        private readonly List<Chat> _chats;
 
-        public Client(ISendRecv sendRecv, CommandFactory commandFactory, MessagesFactory messagesFactory, List<Chat> chats)
+        public ChatClient(ISendRecv sendRecv, CommandFactory commandFactory, MessagesFactory messagesFactory, List<Chat> chats, IWriter writer)
         {
             _sendRecv = sendRecv;
             _commandFactory = commandFactory;
             _messagesFactory = messagesFactory;
             _chats = chats;
+            _writer = writer;
         }
 
         public void Run()
@@ -31,7 +32,11 @@ namespace Kashkeshet.Client.Clients
             {
                 try
                 {
-                    _sendRecv.WriteData(_writer.GetData());
+                    var data = _writer.GetData();
+                    if (data != null)
+                    {
+                        _sendRecv.WriteData(data);
+                    }
                     (string command, int len, byte[] bytes) = _sendRecv.ReadData();
                     _commandFactory.Create(command, bytes, _chats, _messagesFactory)?.Run();
                 }
@@ -39,7 +44,7 @@ namespace Kashkeshet.Client.Clients
                 {
                     if (!(e is IOException))
                     {
-                        Console.WriteLine(e.Message);
+                        Console.WriteLine(e);
                     }
                 }
 
