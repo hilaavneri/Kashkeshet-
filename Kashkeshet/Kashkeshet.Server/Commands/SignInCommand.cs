@@ -15,6 +15,7 @@ namespace Kashkeshet.Server.Commands
             _messages = messages;
             _username = messageToSend;
             _id = id;
+            Console.WriteLine("signing in " + _id);
         }
 
         public void Run()

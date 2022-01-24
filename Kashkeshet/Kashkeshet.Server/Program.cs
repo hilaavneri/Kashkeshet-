@@ -15,8 +15,8 @@ namespace Kashkeshet.Server
             IPAddress localAddr = IPAddress.Parse("127.0.0.1");
             var server = new TcpListener(localAddr, 5500);
             ClientsListener tl = new ClientsListener(server);
-            var msgs = new ClientsMsgs(new Dictionary<Guid, List<byte[]>>(), new Dictionary<Guid, string>());
-            tl.AcceptClients(new ClientHandler(msgs, new CommandFactory()));
+            var msgs = new ClientsMsgs(new Dictionary<int, List<byte[]>>(), new Dictionary<int, string>());
+            tl.AcceptClients(msgs, new CommandFactory());
         }
     }
 }

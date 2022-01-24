@@ -30,7 +30,14 @@ namespace Kashkeshet.Server
         {
             lock (_lock)
             {
-                var msgs =  _messages[id];
+                List<byte[]> msgs =  new List<byte[]>(_messages[id]);
+                if (msgs.Count>0)
+                {
+                    foreach (var item in msgs)
+                    {
+                        Console.WriteLine("message: "+ Encoding.ASCII.GetString(item));
+                    }
+                }
                 _messages[id] = new List<byte[]>();
                 return msgs;
             } 
@@ -70,7 +77,8 @@ namespace Kashkeshet.Server
                     Console.WriteLine("key:" + item.Key);
                     Console.WriteLine("username:" + _usernames[item.Key]);
                     Console.WriteLine(Encoding.ASCII.GetString(msg));
-                    item.Value.Append(msg);
+                    item.Value.Add(msg);
+                    Console.WriteLine("COUNT:" + item.Value.Count);
                 }
             }
         }

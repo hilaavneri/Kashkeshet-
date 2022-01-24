@@ -5,6 +5,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Kashkeshet.Server.Commands;
 
 namespace Kashkeshet.Server
 {
@@ -18,18 +19,19 @@ namespace Kashkeshet.Server
             _server = server;
         }
 
-        public void AcceptClients(IClientHandler clientHandler)
+        public void AcceptClients(ClientsMsgs msgs, CommandFactory commandFactory )
         {
             _server.Start();
             Console.Write("Waiting for a connection... ");
             int i = 0;
             while (true)
             {
-                Console.WriteLine("here");
-                i++;
                 TcpClient client = _server.AcceptTcpClient();
                 client.GetStream().ReadTimeout = 1000;
+                var clientHandler = new ClientHandler(msgs, commandFactory);
                 Task.Run(() => clientHandler.HandleClient(i, new TcpSendRecv(client.GetStream())));
+                i++;
+
             }
 
         }

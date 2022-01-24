@@ -11,16 +11,18 @@ namespace Kashkeshet.Server.ClientHandlers
         private ClientsMsgs _messages;
         private ISendRecv _senderReciever;
         private CommandFactory _commandFactory;
+        private object _lock;
 
         public ClientHandler(ClientsMsgs messages, CommandFactory commandFactory)
         {
             _messages = messages;
             _commandFactory = commandFactory;
+            _lock = new object();
         }
 
         public void HandleClient(int id, ISendRecv senderReciever)
         {
-            Console.WriteLine("start");
+            Console.WriteLine("start " + id);
             _senderReciever = senderReciever;
 
             while (true)
@@ -38,7 +40,9 @@ namespace Kashkeshet.Server.ClientHandlers
 
                     }
                     (string command, int bytesRec, byte[] bytes) = _senderReciever.ReadData();
-                    _commandFactory.Create(command, bytes, _messages, id)?.Run();
+
+                        Console.WriteLine("HANDLE CLIENT ID " + id);
+                        _commandFactory.Create(command, bytes, _messages, id)?.Run();
                     
                     
                 }
