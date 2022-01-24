@@ -88,6 +88,13 @@ namespace Kashkeshet.Server
             }
         }
 
+        public void SendMessageById(int id, byte[] message)
+        {
+            lock (_lock)
+            {
+                _messages[id].Add(message);
+            }
+        }
 
     }
 }
