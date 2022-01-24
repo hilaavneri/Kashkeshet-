@@ -12,6 +12,12 @@ namespace Kashkeshet.Client.Commands
         private List<Chat> _chats;
         private ChatMessageInfo _message;
 
+        public GlobalChatMessageCommand(List<Chat> chats, ChatMessageInfo message)
+        {
+            _chats = chats;
+            _message = message;
+        }
+
         public void Run()
         {
             var globalChats = _chats.Where(chat => chat.type == ChatTypes.Global);
