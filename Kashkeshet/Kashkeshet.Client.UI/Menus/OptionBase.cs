@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Client.UI
+namespace Client.UI.Menus
 {
     public abstract class OptionBase
     {
