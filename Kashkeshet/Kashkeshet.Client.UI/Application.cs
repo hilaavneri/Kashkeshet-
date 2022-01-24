@@ -14,7 +14,7 @@ namespace Client.UI
         public void Run()
         {
             Bootsrapper b = new Bootsrapper();
-            var chat = new Chat(new List<ChatMessageInfo>(), ChatTypes.Global);
+            var chat = new Chat(new ConcurrentQueue<ChatMessageInfo>(), ChatTypes.Global);
             var chats = new List<Chat>();
             chats.Add(chat);
             var writer = new ConsoleDataWriter(new ConcurrentQueue<byte[]>());

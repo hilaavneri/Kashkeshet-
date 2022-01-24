@@ -1,4 +1,5 @@
 ﻿using Kashkeshet.Client.Messages;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Kashkeshet.Client.Chats
@@ -6,10 +7,10 @@ namespace Kashkeshet.Client.Chats
     public class Chat
     {
 
-        public List<ChatMessageInfo> Messages { get; private set; }
+        public ConcurrentQueue<ChatMessageInfo> Messages { get; private set; }
         public ChatTypes type { get; private set; }
 
-        public Chat(List<ChatMessageInfo> messages, ChatTypes type)
+        public Chat(ConcurrentQueue<ChatMessageInfo> messages, ChatTypes type)
         {
             Messages = messages;
             this.type = type;
@@ -17,7 +18,7 @@ namespace Kashkeshet.Client.Chats
 
         public void AddMessage(ChatMessageInfo msg)
         {
-            Messages.Add(msg);
+            Messages.Enqueue(msg);
         }
     }
 }
