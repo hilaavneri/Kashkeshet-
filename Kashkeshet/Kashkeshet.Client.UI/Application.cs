@@ -36,13 +36,13 @@ namespace Client.UI
             {
                 foreach (var c in chats)
                 {
-                    foreach (var item in c.Messages)
+
+                    if (c.Messages.TryDequeue(out var msg))
                     {
-                        Console.WriteLine("GOT MESSAGAE FROM:" 
-                            +item.SenderUserName);
-                        Console.WriteLine(Encoding.ASCII.GetString(item.Message));
+                        Console.WriteLine(msg.SenderUserName);
+                        Console.WriteLine(Encoding.ASCII.GetString(msg.Message));
                     }
-                    c.Messages.Clear();
+
                 }
             }
         }
